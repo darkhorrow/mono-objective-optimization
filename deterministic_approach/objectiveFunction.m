@@ -1,4 +1,4 @@
-function [f] = C(x)
+function [f] = objectiveFunction(x)
 
 % x1 = ts; x2 = th; x3 = R; x(4) = L
 
