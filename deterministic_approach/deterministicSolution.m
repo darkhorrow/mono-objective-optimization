@@ -36,17 +36,21 @@ function [] = solve(initialPoint)
         x(i) = 0.0625*s;
     end
     
+    for i=1:4
+        x(i) = round(x(i), 4);
+    end
+    
     fprintf('El punto inicial es: [');
     fprintf('%g ', initialPoint);
     fprintf(']\n');
     fprintf('\nLa función alcanza el mínimo en fval=%f \n',objectiveFunction(x));
-    fprintf('TS = %f \n', x(1));
-    fprintf('TH = %f \n', x(2));
-    fprintf('R = %f \n', x(3));
-    fprintf('L = %f \n', x(4));
-    fprintf('ts/R = %f \n', x(1)/x(3));
-    fprintf('th/R = %f \n', x(2)/x(3));
-    fprintf('V = %f \n', pi*x(3)^2*x(4)+(4/3)*pi*x(3)^3);
+    fprintf('TS = %10.4f \n', x(1));
+    fprintf('TH = %10.4f \n', x(2));
+    fprintf('R = %10.4f \n', x(3));
+    fprintf('L = %10.4f \n', x(4));
+    fprintf('ts/R = %10.4f \n', x(1)/x(3));
+    fprintf('th/R = %10.4f \n', x(2)/x(3));
+    fprintf('V = %10.4f \n', pi*x(3)^2*x(4)+(4/3)*pi*x(3)^3);
     fprintf('El valor de la variable EXITFLAG es %d \n',exitflag);
 
     % disp(' ');
