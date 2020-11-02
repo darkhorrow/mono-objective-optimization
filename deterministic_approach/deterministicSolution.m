@@ -3,13 +3,13 @@ clear % Clear variables and functions from memory.
 
 % x1 = ts; x2 = th; x3 = R; x(4) = L;
 
-x0 = [1,1,1,1]; 	% Initial conditions
+x0 = [0.0625,0.0625,10,10];         % Initial conditions with lower bounds
 solve(x0);
 
-x0 = [1,2,2,2]; 	% Initial conditions
+x0 = [0.0625*99,0.0625*99,200,240]; % Initial conditions with upper bounds
 solve(x0);
 
-x0 = [3,4,1,3]; 	% Initial conditions
+x0 = [0.0625*50,0.0625*50,100,120]; 	% Initial conditions with (almost) upper bound / 2 
 solve(x0);
 
 function [] = solve(initialPoint)
@@ -23,7 +23,7 @@ function [] = solve(initialPoint)
     disp('Running...')
 
     % Modificamos algunas de las opciones de OPTIMSET
-    options = optimset('Algorithm','sqp',...
+    options = optimset('Algorithm','interior-point',...
         'TolFun',1.e-10, 'TolCon',1.e-20,'PlotFcns','optimplotfval');
 
     [x,fval,exitflag,output] = fmincon(@objectiveFunction,...
