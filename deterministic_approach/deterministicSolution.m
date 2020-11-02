@@ -3,13 +3,13 @@ clear % Clear variables and functions from memory.
 
 % x1 = ts; x2 = th; x3 = R; x(4) = L;
 
-x0 = [1,1,1,1]; 	% Initial conditions
+x0 = [0.0625,0.0625,10,10];         % Initial conditions with lower bounds
 solve(x0);
 
-x0 = [1,2,2,2]; 	% Initial conditions
+x0 = [0.0625*99,0.0625*99,200,240]; % Initial conditions with upper bounds
 solve(x0);
 
-x0 = [3,4,1,3]; 	% Initial conditions
+x0 = [0.0625*50,0.0625*50,100,120]; 	% Initial conditions with (almost) upper bound / 2 
 solve(x0);
 
 function [] = solve(initialPoint)
@@ -23,8 +23,9 @@ function [] = solve(initialPoint)
     disp('Running...')
 
     % Modificamos algunas de las opciones de OPTIMSET
-    options = optimset('Algorithm','sqp',...
-        'TolFun',1.e-10, 'TolCon',1.e-20,'PlotFcns','optimplotfval');
+    options = optimset('Algorithm','interior-point',...
+        'TolFun',1.e-10, 'TolCon',1.e-20,'PlotFcns','optimplotfval',...
+        'TolX', 1.e-14);
 
     [x,fval,exitflag,output] = fmincon(@objectiveFunction,...
         initialPoint,A,b,[],[],LB,UB,@nonlinearconst,options);
@@ -35,17 +36,21 @@ function [] = solve(initialPoint)
         x(i) = 0.0625*s;
     end
     
+    for i=1:4
+        x(i) = round(x(i), 4);
+    end
+    
     fprintf('El punto inicial es: [');
     fprintf('%g ', initialPoint);
     fprintf(']\n');
     fprintf('\nLa función alcanza el mínimo en fval=%f \n',objectiveFunction(x));
-    fprintf('TS = %f \n', x(1));
-    fprintf('TH = %f \n', x(2));
-    fprintf('R = %f \n', x(3));
-    fprintf('L = %f \n', x(4));
-    fprintf('ts/R = %f \n', x(1)/x(3));
-    fprintf('th/R = %f \n', x(2)/x(3));
-    fprintf('V = %f \n', pi*x(3)^2*x(4)+(4/3)*pi*x(3)^3);
+    fprintf('TS = %10.4f \n', x(1));
+    fprintf('TH = %10.4f \n', x(2));
+    fprintf('R = %10.4f \n', x(3));
+    fprintf('L = %10.4f \n', x(4));
+    fprintf('ts/R = %10.4f \n', x(1)/x(3));
+    fprintf('th/R = %10.4f \n', x(2)/x(3));
+    fprintf('V = %10.4f \n', pi*x(3)^2*x(4)+(4/3)*pi*x(3)^3);
     fprintf('El valor de la variable EXITFLAG es %d \n',exitflag);
 
     % disp(' ');
