@@ -3,14 +3,27 @@ clear % Clear variables and functions from memory.
 
 % x1 = ts; x2 = th; x3 = R; x(4) = L;
 
+iter = 2;
 
-solve(0.6);
+solutions = [];
+for iter = 1:iter
+   solutions = [solutions;objectiveFunction(solve(0.7))]; 
+end
+printData(solutions, 'Con 0.7 de probabilidad de cruze');
 
-solve(0.7);
+solutions = [];
+for iter = 1:iter
+   solutions = [solutions;objectiveFunction(solve(0.8))]; 
+end
+printData(solutions, 'Con 0.8 de probabilidad de cruze');
 
-solve(0.8);
+solutions = [];
+for iter = 1:iter
+   solutions = [solutions;objectiveFunction(solve(0.9))]; 
+end
+printData(solutions, 'Con 0.9 de probabilidad de cruze');
 
-function [] = solve(crossfrac)
+function [value] = solve(crossfrac)
 
 
     LB = [0.0625,0.0625,10,10]; % Lower bounds
@@ -38,15 +51,17 @@ function [] = solve(crossfrac)
         x(i) = 0.0625*s;
     end
     
-    fprintf('\nLa función alcanza el mínimo en fval=%f \n',objectiveFunction(x));
-    fprintf('TS = %f \n', x(1));
-    fprintf('TH = %f \n', x(2));
-    fprintf('R = %f \n', x(3));
-    fprintf('L = %f \n', x(4));
-    fprintf('ts/R = %f \n', x(1)/x(3));
-    fprintf('th/R = %f \n', x(2)/x(3));
-    fprintf('V = %f \n', pi*x(3)^2*x(4)+(4/3)*pi*x(3)^3);
-    fprintf('El valor de la variable EXITFLAG es %d \n',exitflag);
+    value = x;
+    
+%     fprintf('\nLa función alcanza el mínimo en fval=%f \n',objectiveFunction(x));
+%     fprintf('TS = %f \n', x(1));
+%     fprintf('TH = %f \n', x(2));
+%     fprintf('R = %f \n', x(3));
+%     fprintf('L = %f \n', x(4));
+%     fprintf('ts/R = %f \n', x(1)/x(3));
+%     fprintf('th/R = %f \n', x(2)/x(3));
+%     fprintf('V = %f \n', pi*x(3)^2*x(4)+(4/3)*pi*x(3)^3);
+%     fprintf('El valor de la variable EXITFLAG es %d \n',exitflag);
 
     % disp(' ');
     % str = sprintf('Algoritmo utilizado: %s',output.algorithm);
@@ -74,4 +89,11 @@ function [] = solve(crossfrac)
     %     Interior-point:
     %      -3  Problem seems unbounded.
 
+end
+
+function [] = printData(data, title)
+    fprintf(title);
+    fprintf('\nEl valor total de la media es %f \n',mean(data));
+    fprintf('\nEl valor total de la std es %f \n',std(data));
+    fprintf('\nEl mejor valor es %f \n',max(data));
 end
