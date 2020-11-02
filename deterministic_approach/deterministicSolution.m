@@ -24,7 +24,8 @@ function [] = solve(initialPoint)
 
     % Modificamos algunas de las opciones de OPTIMSET
     options = optimset('Algorithm','interior-point',...
-        'TolFun',1.e-10, 'TolCon',1.e-20,'PlotFcns','optimplotfval');
+        'TolFun',1.e-10, 'TolCon',1.e-20,'PlotFcns','optimplotfval',...
+        'TolX', 1.e-14);
 
     [x,fval,exitflag,output] = fmincon(@objectiveFunction,...
         initialPoint,A,b,[],[],LB,UB,@nonlinearconst,options);
