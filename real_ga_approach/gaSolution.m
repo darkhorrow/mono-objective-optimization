@@ -29,7 +29,7 @@ function [value] = solve(crossfrac)
 
     fprintf('\nRunning with croosover probability = %f...\n', crossfrac);
 
-    % Modificamos algunas de las opciones de OPTIMSET
+    %Modificamos algunas de las opciones de OPTIMSET
     options = optimoptions('ga', 'PopulationSize', 100, 'Generations', 150,...
         'EliteCount', 1, 'SelectionFcn', 'selectionstochunif',... 
         'CrossoverFcn', 'crossoverarithmetic',... 
@@ -91,5 +91,5 @@ function [] = printData(data, title)
     fprintf(title);
     fprintf('\nEl valor total de la media es %f \n',mean(data));
     fprintf('\nEl valor total de la std es %f \n',std(data));
-    fprintf('\nEl mejor valor es %f \n',max(data));
+    fprintf('\nEl mejor valor es %f \n',min(data));
 end
