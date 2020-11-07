@@ -1,10 +1,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%ALGORITMO GENETICO: Diseño de un voladizo de sección rectangular y 
-%                    longitud dada para conseguir peso mínimo
+%ALGORITMO GENETICO: Diseï¿½o de un voladizo de secciï¿½n rectangular y 
+%                    longitud dada para conseguir peso mï¿½nimo
 %SOLUCION: El valor de las variables del problema son:
 %    0.5    0.0928
-%El valor de la función objetivo es: 4.641589
-%El valor de la restricción (no lineal): 0.994583
+%El valor de la funciï¿½n objetivo es: 4.641589
+%El valor de la restricciï¿½n (no lineal): 0.994583
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 inicializa();
 
@@ -20,9 +20,9 @@ nvars=4;
 lb=[0.0625,0.0625,10,10]; 
 %Limite superior de los valores de las variables 
 ub=[0.0625*99,0.0625*99,200,240]; 
-%Número de decimales de precisión
+%Nï¿½mero de decimales de precisiï¿½n
 dprec = 4;
-%Número de bits con que se codifica cada variable
+%Nï¿½mero de bits con que se codifica cada variable
 nbits = zeros(1,nvars);
 tot_bits = 0;
 for i=1:1:nvars
@@ -39,22 +39,22 @@ G=150;
 N=100;
 %Numero de INDIVIDUOS ELITISTAS
 E=1;  %si E=0 se sobreentiende que no se aplica elitismo
-%Operador de selección:    0:proporcional    1:torneo probabilístico    2:torneo    
+%Operador de selecciï¿½n:    0:proporcional    1:torneo probabilï¿½stico    2:torneo    
 tipo_seleccion=2;
-%Probabilidad de selección del mejor para el torneo probabilístico (1)
+%Probabilidad de selecciï¿½n del mejor para el torneo probabilï¿½stico (1)
 psel=0.75;
-%Número de padres que intervienen en el torneo (2): 2, 3 o 5
+%Nï¿½mero de padres que intervienen en el torneo (2): 2, 3 o 5
 nuintor = 3;
 %Operador de cruce:   0:cruce un punto   1:cruce dos puntos   2:cruce uniforme
 tipo_cruce=2;
 %Probabilidad de cruce (prob. se realice cruce)
 pcru=0.8;
-%Operador de mutación:   0:un bit   1:dos bits    2:uniforme
+%Operador de mutaciï¿½n:   0:un bit   1:dos bits    2:uniforme
 tipo_mutacion=2;
-%Cada cuántas generaciones se dibuja el valor del mejor
+%Cada cuï¿½ntas generaciones se dibuja el valor del mejor
 ngendibujo = 10; 
-%número de ensayos diferentes que se quieren realizar
-ensayos=1;    
+%nï¿½mero de ensayos diferentes que se quieren realizar
+ensayos=10;    
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                      % GRAN BUCLE QUE VA GENERANDO LOS ENSAYOS 
@@ -62,13 +62,13 @@ ensayos=1;
 for jj=1:ensayos
   
    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-   ti=cputime;              %recoge tiempo cuando empieza la optimización   
+   ti=cputime;              %recoge tiempo cuando empieza la optimizaciï¿½n   
    [mejor,fmejor]=GA(jj,ensayos);
  
    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                         % IMPRIMIR-GRAFICAR RESULTADOS 
    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-   tf=cputime-ti;            %recoge tiempo cuando termina la optimización
+   tf=cputime-ti;            %recoge tiempo cuando termina la optimizaciï¿½n
    muestratiempo(jj,tf);     %mostrar tiempos
 
    if ensayos == 1
@@ -77,7 +77,7 @@ for jj=1:ensayos
        format long
        disp('El valor de las variables del problema son:')
        disp(mejor)
-       disp('El valor de la función objetivo es:')
+       disp('El valor de la funciï¿½n objetivo es:')
        disp(fmejor)
        fprintf('\n');
    end

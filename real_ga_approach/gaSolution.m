@@ -3,25 +3,21 @@ clear % Clear variables and functions from memory.
 
 % x1 = ts; x2 = th; x3 = R; x(4) = L;
 
-iter = 2;
+iter = 30;
 
-solutions = [];
-for iter = 1:iter
-   solutions = [solutions;objectiveFunction(solve(0.7))]; 
-end
-printData(solutions, 'Con 0.7 de probabilidad de cruze');
+solutions_07 = [];
+solutions_08 = [];
+solutions_09 = [];
 
-solutions = [];
 for iter = 1:iter
-   solutions = [solutions;objectiveFunction(solve(0.8))]; 
+   solutions_07  =  [solutions_07;objectiveFunction(solve(0.7))]; 
+   solutions_08  =  [solutions_08;objectiveFunction(solve(0.8))];
+   solutions_09  =  [solutions_09;objectiveFunction(solve(0.9))];
 end
-printData(solutions, 'Con 0.8 de probabilidad de cruze');
 
-solutions = [];
-for iter = 1:iter
-   solutions = [solutions;objectiveFunction(solve(0.9))]; 
-end
-printData(solutions, 'Con 0.9 de probabilidad de cruze');
+printData(solutions_07, 'Con 0.7 de probabilidad de cruze');
+printData(solutions_08, 'Con 0.8 de probabilidad de cruze');
+printData(solutions_09, 'Con 0.9 de probabilidad de cruze');
 
 function [value] = solve(crossfrac)
 
