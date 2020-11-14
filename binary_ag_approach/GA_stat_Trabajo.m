@@ -34,9 +34,9 @@ end
                          % PARAMETROS DEL ALGORITMO GENETICO 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                   
 %Numero de GENERACIONES
-G=5000;
+G=150;
 %Numero de INDIVIDUOS de la poblacion (un numero par)
-N=200;
+N=100;
 %Numero de INDIVIDUOS ELITISTAS
 E=1;  %si E=0 se sobreentiende que no se aplica elitismo
 %Operador de selección:    0:proporcional    1:torneo probabilístico    2:torneo    

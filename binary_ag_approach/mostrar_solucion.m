@@ -1,5 +1,7 @@
 function mostrar_solucion(x)
 
+global nvars
+
 [coste_total, volumen, factible] = evalua_solucion(x);
 
 fprintf('     TS         TH         R         L\n');

@@ -36,7 +36,7 @@ end
 %Numero de GENERACIONES
 G=150;
 %Numero de INDIVIDUOS de la poblacion (un numero par)
-N=500;
+N=100;
 %Numero de INDIVIDUOS ELITISTAS
 E=1;  %si E=0 se sobreentiende que no se aplica elitismo
 %Operador de selección:    0:proporcional    1:torneo probabilístico    2:torneo    
