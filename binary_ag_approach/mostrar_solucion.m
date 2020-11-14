@@ -2,12 +2,12 @@ function mostrar_solucion(x)
 
 global nvars
 
-[coste_total, volumen, factible] = evalua_solucion(x);
+[coste_total, volumen, factible, x] = evalua_solucion(x);
 
-fprintf('     TS         TH         R         L\n');
+fprintf('       TS           TH           R           L\n');
 
 for j=1:nvars
-    fprintf('%10.3f ',x(j));
+    fprintf('%12.4e ',x(j));
 end
 
 fprintf('\n\n');
