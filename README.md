@@ -1,34 +1,42 @@
 # mono-objective-optimization
 Different ways of solving a problem, given a specific objective function and some constraints, using Matlab.
 
-## Tareas 
+## Problem 
 
-* Formular matemáticamente el problema como un problema de optimización con restricciones.
+You want to build a cylindrical pressure vessel covered on both sides with hemispherical heads. The objective is to minimize the total cost, including the cost of the material, shape and weld.
 
-* Utilizar un método determinista para su resolución. Probar con distintos puntos de inicio (al menos 3) y comprobar, en todos los casos, si se cumplen todas las restricciones. Incorporar los resultados obtenidos al informe (variables (redondear a 4 cifras decimales), valor de la función objetivo y restricciones), indicando el punto de inicio y las opciones de OPTIMSET/OPTIMOPTIONS que has utilizado.
-
-* Resolver el problema usando el GA Binario facilitado en clase. Indicar los parámetros utilizados.
-
-* Resolver el problema usando la función ga() de Matlab con representación real. Utilizar como criterio de parada de parada de la optimización el número máximo de generaciones.
-
-* Ejecutar 30 veces el algoritmo con los parámetros que mejor se adaptan al problema, con N = 200 y G = 500 (función ga() de Matlab) y con N = 200 y G = 5000 (GA Binario).
-
-* En todos los casos hay que añadir al informe la parte de los códigos que se ha modificado y las tablas creadas en el ajuste de parámetros. Son tres tablas: Best, Mean, Standard Deviation.
-
-* Interpretar y analizar los resultados obtenidos.
-
-## Ecuaciones
+The air storage tank must withstand a working pressure of 3000 psi and must have a minimum volume of 750 ft3.
 
 <center>
 
-![modelo del problema](./img/modelo.png)
+![Constraints](./img/figure.png)
 
 </center>
 
-## Pruebas
+## Numerical Modeling
+
+### Objective Function
 
 <center>
 
-![modelo del problema](./img/opciones.png)
+![Objective function](./img/objective_function.png)
 
 </center>
+
+### Constraints
+
+<center>
+
+![Constraints](./img/constraints.png)
+
+</center>
+
+## Solutions
+
+We rely on three different approaches:
+
+* Using deterministic optimization, as it is a minimization problem with restrictions, we use the function **fmincon()** from the matlab library.
+
+* Using heuristic and evolutionary optimization with genetic algorithms with real representation of individuals, using the **ga()** function from the matlab library.
+
+* Using heuristic and evolutionary optimization with genetic algorithms with binary representation of individuals, using an algorithm proposed by the [SIANI university institute](https://www.siani.es/).
