@@ -1,10 +1,10 @@
 %FUNCION CALCULA LOS VALORES DE LAS FUNCIONES OBJETIVO
-function [pop] = fitness_function(pop,ni)
+function pop = fitness_function(pop,ni)
 
 global nvars tot_bits
 
 %vector que guarda los valores de variables en decimal
-x=bin2real(pop(ni,:));
+x = bin2real(pop(ni,:));
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %APLICAMOS formula para calcular f(x) (se guarda en columna tot_bits+nvariables+1) 
@@ -28,15 +28,15 @@ con3 = -(pi*x(3)^2*x(4)+(4/3)*pi*x(3)^3) + 750*12^3;
 coste_total = coste;
 
 if con1 > 0
-    coste_total = coste_total + 1.e6*(con1)^2;
+    coste_total = coste_total + (1.e6 * (con1)^2);
 end
 
 if con2 > 0
-    coste_total = coste_total + 1.e6*(con2)^2;
+    coste_total = coste_total + (1.e6 * (con2)^2);
 end
 
 if con3 > 0
-    coste_total = coste_total + 1.e6*(con3)^2;
+    coste_total = coste_total + (1.e6 * (con3)^2);
 end
 
 pop(ni,tot_bits+nvars+1) = coste_total;

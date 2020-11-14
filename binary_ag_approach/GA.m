@@ -14,8 +14,8 @@ pop=zeros(2*N,tot_bits+nvars+1); %matriz población con nº filas(cromosomas) = 2*
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                       
 for ni=1:N  %ni=número individuo por el que se va
-    [pop]=generar_poblacion_ley_uniforme(pop,ni,tot_bits);
-    [pop]=fitness_function(pop,ni); 
+    [pop] = generar_poblacion_ley_uniforme(pop,ni,tot_bits);
+    [pop] = fitness_function(pop,ni); 
 end
 %se ordena de MENOR a MAYOR por f(x)(MINIMIZA) y los elitistas quedan arriba
 pop(1:N,:)=sortrows(pop(1:N,:),tot_bits+nvars+1);
